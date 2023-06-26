@@ -1,1 +1,1 @@
-# FullStackOpen13sqlEexercises
+# FullStackOpen13sqlExercises
