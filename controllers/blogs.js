@@ -37,8 +37,9 @@ router.delete('/:id',blogFinder,  async (req, res) => {
 })
 
 router.put('/:id', blogFinder, async (req, res) => {
+  console.log('HGELLO', req.blog)
     if (req.blog) {
-        req.blog.important = req.body.important
+        req.blog.likes = req.body.likes
         await req.blog.save()
         res.json(req.blog)
       } else {
