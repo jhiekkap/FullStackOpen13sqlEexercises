@@ -1,20 +1,16 @@
 const router = require('express').Router()
-
-const { User, Blog } = require('../models')
+const { Blog } = require('../models')
+const sequelize  = require('sequelize')
 
 router.get('/', async (_req, res) => {
-  const users = await User.findAll({
-    include: {
-      model: Blog,
-      attributes: { exclude: ['userId'] }
-    }
+  const authors = await Blog.findAll({
+    attributes: ['author', [sequelize.fn('count', sequelize.col('author')), 'articles'], [sequelize.fn('sum', sequelize.col('likes')), 'likes']],
+    group: ['author'],
+    order: [
+      ['likes', 'DESC'],
+    ],
   })
-  const usersToSend = users.map(user => ({
-    author: user.name,
-    articles: user.blogs.length,
-    likes: user.blogs.reduce((acc, blog) => acc + blog.likes, 0), 
-  }))
-  res.json(usersToSend)
+  res.json(authors)
 })
 
 module.exports = router
