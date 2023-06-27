@@ -22,10 +22,18 @@ User.init({
     type: DataTypes.STRING,
     allowNull: false
   },
+  // created_at: {
+  //    type: DataTypes.DATE,
+  //    allowNull: true,
+  //   },
+  // updated_at: {
+  //   type: DataTypes.DATE,
+  //   allowNull: true,
+  //   },
 }, {
   sequelize,
   underscored: true,
-  timestamps: true,
+  timestamps: false, // TODO: true
   modelName: 'user'
 })
 
