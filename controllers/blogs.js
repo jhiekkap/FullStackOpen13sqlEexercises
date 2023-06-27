@@ -49,8 +49,8 @@ router.get('/:id', blogFinder, async (req, res) => {
   }
 })
 
-router.delete('/:id', blogFinder, async (req, res) => {
-  if (req.blog) {
+router.delete('/:id', tokenExtractor, blogFinder, async (req, res) => {
+  if (req.blog && req.blog.userId === req.decodedToken.id) {
     await req.blog.destroy()
   }
   res.status(204).end()
