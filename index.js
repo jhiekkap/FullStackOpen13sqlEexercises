@@ -19,6 +19,9 @@ const errorHandler = (error, _req, res, next) => {
   if (error.message === 'Validation error: Validation isEmail on username failed') {
     return res.status(400).send({ error: 'invalid username' })
   }
+  if (error.message === 'Validation error: Validation min on year failed') {
+    return res.status(400).send({ error: 'invalid year' })
+  }
   next(error)
 }
 app.use(errorHandler)
