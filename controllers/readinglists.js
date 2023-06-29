@@ -7,6 +7,7 @@ router.post('/', async (req, res) => {
   res.json(readinglist)
 })
 
+// TODO: only read?
 router.put('/:id', tokenExtractor, async (req, res) => {
   const readinglist = await Readinglist.findByPk(req.params.id)
   if (readinglist) {
