@@ -3,7 +3,8 @@
     author text,
     url text NOT NULL,
     title text NOT NULL,
-    likes int DEFAULT 0
+    likes int DEFAULT 0,
+    year int NOT NULL,
 );
 
 insert into users (username, name , created_at, updated_at) values('mluukkai@hki.fi', 'Matti Luukkainen', '2017-11-01 00:00:00', '2017-11-01 00:00:00');
@@ -19,3 +20,8 @@ insert into readinglists (user_id, blog_id, read ) values (1, 1, false);
 insert into readinglists (user_id, blog_id, read ) values (2, 3, false);
 insert into readinglists (user_id, blog_id, read ) values (3, 4, false);
 insert into readinglists (user_id, blog_id, read ) values (1, 3, true);
+
+CREATE TABLE sessions (
+    id SERIAL PRIMARY KEY,
+    user_id text NOT NULL,
+);
