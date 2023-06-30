@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   const where = {}
   if (req.query.read) {
-    where.read = req.query.read  === 'true' ? true : false;
+    where.read = req.query.read === 'true' ? true : false;
   }
 
   const user = await User.findByPk(req.params.id, {
@@ -56,7 +56,7 @@ router.put('/:username', async (req, res) => {
     }
   })
   if (user) {
-    await user.update(req.body)
+    await user.update({ username: req.body.username })
     res.json(user)
   } else {
     res.status(404).end()

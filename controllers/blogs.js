@@ -59,7 +59,7 @@ router.delete('/:id', tokenExtractor, blogFinder, async (req, res) => {
 })
 
 router.put('/:id', blogFinder, async (req, res) => {
-  await req.blog.update(req.body) // TODO: only likes?
+  await req.blog.update({ likes: req.body.likes })
   res.json(req.blog)
 })
 
