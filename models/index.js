@@ -7,7 +7,7 @@ User.hasMany(Blog)
 Blog.belongsTo(User)
 
 User.belongsToMany(Blog, { through: Readinglist, as: 'readings' })
-Blog.belongsToMany(User, { through: Readinglist/* , as: 'readings' */ }) // TODO: ??
+Blog.belongsToMany(User, { through: Readinglist })
 
 Blog.hasMany(Readinglist)
 Readinglist.belongsTo(Blog)
